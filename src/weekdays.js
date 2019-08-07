@@ -7,12 +7,13 @@
 
 'use strict';
 
-const React = require('react');
-const { Text, View } = require('react-native');
+import React from 'react'
+import { Text, View } from 'react-native'
 
-const Utils = require('./utils');
 
-function Weekdays(props) {
+import Utils from './utils'
+
+const Weekdays=(props)=> {
   const { styles, startFromMonday, weekdays, textStyle } = props;
   let wd = weekdays;
   if (!wd) {
@@ -34,4 +35,4 @@ function Weekdays(props) {
 
 Weekdays.propTypes = {};
 
-module.exports = Weekdays;
+export default Weekdays

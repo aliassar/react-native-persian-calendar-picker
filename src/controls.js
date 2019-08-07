@@ -6,23 +6,17 @@
  */
 
 'use strict';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const { Text, TouchableOpacity } = require('react-native');
 
-function Controls({ styles, textStyles, label, onPressControl }) {
-  return (
-    <TouchableOpacity onPress={() => onPressControl()}>
-      <Text style={[styles, textStyles]}>{label}</Text>
-    </TouchableOpacity>
-  );
-}
+const Controls = ({ renderButtonComponent, label, onPressControl }) => {
+  return renderButtonComponent(label, () => onPressControl());
+};
 
 Controls.propTypes = {
-  styles: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
   onPressControl: PropTypes.func.isRequired,
 };
 
-module.exports = Controls;
+export default Controls;

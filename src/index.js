@@ -7,16 +7,16 @@
 
 'use strict';
 
-const React = require('react');
-const jMoment = require('moment-jalaali');
-const { Dimensions, View } = require('react-native');
+import React from 'react'
+import jMoment from 'moment-jalaali'
+import { Dimensions, View } from 'react-native'
 
-const DaysGridView = require('./days-grid');
-const HeaderControls = require('./header-controls');
-const Weekdays = require('./weekdays');
-const Swiper = require('./swiper');
-const Utils = require('./utils');
-const makeStyles = require('./style');
+import DaysGridView from './days-grid'
+import HeaderControls from './header-controls'
+import Weekdays from './weekdays'
+import Swiper from './swiper'
+import Utils from './utils'
+import makeStyles from './style'
 
 const SWIPE_LEFT = 'SWIPE_LEFT';
 const SWIPE_RIGHT = 'SWIPE_RIGHT';
@@ -238,12 +238,12 @@ class PersianCalendarPicker extends React.Component {
     }
     switch (gestureName) {
       case SWIPE_LEFT:
-        if (this.props.isRTL) this.handleOnPressPrevious();
+        if (this.props.isRTL) this.handleOnPressPrevious()
         else this.handleOnPressNext();
         break;
       case SWIPE_RIGHT:
         if (this.props.isRTL) this.handleOnPressNext();
-        else this.handleOnPressPrevious();
+        this.handleOnPressPrevious();
         break;
     }
   }
@@ -286,6 +286,7 @@ class PersianCalendarPicker extends React.Component {
       swipeConfig,
       customDatesStyles,
       enableDateChange,
+      renderButtonComponent
     } = this.props;
 
     let disabledDatesTime = [];
@@ -349,7 +350,8 @@ class PersianCalendarPicker extends React.Component {
             months={months}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
-            textStyle={textStyle}
+            renderButtonComponent={renderButtonComponent}
+
           />
           <Weekdays
             styles={styles}
@@ -388,4 +390,4 @@ class PersianCalendarPicker extends React.Component {
   }
 }
 
-module.exports = PersianCalendarPicker;
+export default PersianCalendarPicker

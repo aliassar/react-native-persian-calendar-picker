@@ -7,20 +7,21 @@
 
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const jMoment = require('moment-jalaali');
-const uuid = require('uuid/v4');
-const { Text, View, ViewPropTypes } = require('react-native');
+import React from 'react'
+import PropTypes from 'prop-types'
+import jMoment from 'moment-jalaali'
+import uuid from 'uuid/v4'
+import { Text, View, ViewPropTypes }from 'react-native'
 
-const Day = require('./Day');
-const EmptyDay = require('./EmptyDay');
-const Utils = require('./utils');
+import Day from './Day'
+import EmptyDay from './EmptyDay'
+import Utils from './utils'
+
 
 //Fallback when RN version is < 0.44
 const viewPropTypes = ViewPropTypes || View.propTypes;
 
-export default function DaysGridView(props) {
+const DaysGridView=(props) =>{
   const {
     month,
     year,
@@ -139,7 +140,7 @@ export default function DaysGridView(props) {
     return column;
   }
   return (
-    <View style={styles.daysWrapper}>
+    <View style={[styles.daysWrapper, {minHeight: 250}]}>
       {guideArray.map(index => (
         <View key={index} style={styles.weekRow}>
           {generateColumns(index)}
@@ -176,4 +177,4 @@ DaysGridView.propTypes = {
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
 
-module.exports = DaysGridView;
+export default DaysGridView

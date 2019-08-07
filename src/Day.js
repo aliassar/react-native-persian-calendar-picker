@@ -7,12 +7,13 @@
 
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const jMoment = require('moment-jalaali');
-const { Text, TouchableOpacity, View } = require('react-native');
+import React from 'react'
+import PropTypes from 'prop-types'
+import jMoment from 'moment-jalaali'
+import { Text, TouchableOpacity, View } from 'react-native'
 
-function Day(props) {
+
+const Day=(props) =>{
   const {
     day,
     month,
@@ -42,7 +43,7 @@ function Day(props) {
     .jYear(year)
     .jMonth(month)
     .jDate(day);
-  const today = jMoment();
+  const today = jMoment.utc();
 
   let dateOutOfRange;
   let daySelectedStyle = styles.dayButton; // may be overridden depending on state
@@ -270,4 +271,4 @@ Day.propTypes = {
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
 
-module.exports = Day;
+export default Day;

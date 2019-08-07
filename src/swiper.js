@@ -7,8 +7,9 @@
 
 'use strict';
 
-const React = require('react');
-const { PanResponder, View } = require('react-native');
+import React from 'react'
+import { PanResponder, View } from 'react-native'
+
 
 export const swipeDirections = {
   SWIPE_UP: 'SWIPE_UP',
@@ -126,4 +127,4 @@ class Swiper extends React.Component {
   }
 }
 
-module.exports = Swiper;
+export default Swiper

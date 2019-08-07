@@ -7,11 +7,12 @@
 
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const { Text, TouchableOpacity, View } = require('react-native');
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Text, TouchableOpacity, View } from 'react-native'
 
-function EmptyDay(props) {
+
+const EmptyDay=(props) =>{
   const { styles } = props;
   return (
     <View style={styles.dayWrapper}>
@@ -30,4 +31,4 @@ EmptyDay.propTypes = {
   onPressDay: PropTypes.func,
 };
 
-module.exports = EmptyDay;
+export default EmptyDay

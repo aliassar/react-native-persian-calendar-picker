@@ -7,9 +7,9 @@
 
 'use strict';
 
-const jMoment = require('moment-jalaali');
+import jMoment from 'moment-jalaali'
 
-module.exports = {
+const Utils = {
   START_DATE: 'START_DATE',
   END_DATE: 'END_DATE',
   WEEKDAYS: [
@@ -41,3 +41,4 @@ module.exports = {
     return jMoment.jDaysInMonth(year, month);
   },
 };
+export default Utils

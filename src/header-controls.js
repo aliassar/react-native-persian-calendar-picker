@@ -7,14 +7,14 @@
 
 'use strict';
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const { Text, View } = require('react-native');
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Text, View, TouchableOpacity } from 'react-native';
 
-const Utils = require('./utils');
-const Controls = require('./controls');
+import Utils from './utils';
+import Controls from './controls';
 
-function HeaderControls(props) {
+const HeaderControls = props => {
   const {
     styles,
     currentMonth,
@@ -25,21 +25,28 @@ function HeaderControls(props) {
     previousTitle,
     nextTitle,
     textStyle,
+    renderButtonComponent,
   } = props;
   const MONTHS = months ? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
   // index for month array in english
-  const previous = previousTitle ? previousTitle : 'قبلی';
-  const next = nextTitle ? nextTitle : 'بعدی';
+  const previous = previousTitle ? previousTitle : 'ماه قبلی';
+  const next = nextTitle ? nextTitle : 'ماه بعدی';
   const month = MONTHS[currentMonth];
   const year = currentYear;
-
+  const renderButton = renderButtonComponent
+    ? renderButtonComponent
+    : (label, onPress) => (
+        <TouchableOpacity onPress={onPress}>
+          <Text>{label}</Text>
+        </TouchableOpacity>
+      );
   return (
-    <View style={styles.headerWrapper}>
+    <View style={[styles.headerWrapper, { marginBottom: 10 }]}>
       <Controls
         label={previous}
         onPressControl={onPressPrevious}
-        styles={[styles.monthSelector, styles.prev]}
+        renderButtonComponent={renderButton}
         textStyles={textStyle}
       />
       <View>
@@ -50,12 +57,12 @@ function HeaderControls(props) {
       <Controls
         label={next}
         onPressControl={onPressNext}
-        styles={[styles.monthSelector, styles.next]}
+        renderButtonComponent={renderButton}
         textStyles={textStyle}
       />
     </View>
   );
-}
+};
 
 HeaderControls.propTypes = {
   currentMonth: PropTypes.number,
@@ -64,4 +71,4 @@ HeaderControls.propTypes = {
   onPressPrevious: PropTypes.func,
 };
 
-module.exports = HeaderControls;
+export default HeaderControls;
